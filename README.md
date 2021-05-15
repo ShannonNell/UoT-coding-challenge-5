@@ -1,7 +1,7 @@
 # Challenge 5 Work Day Scheduler Starter Code
 
 ## Description
-A timed coding quiz with multiple-choice questions. This app runs in the browser and features dynamically updated HTML and CSS and is powered by JavaScript.
+Calendar app that allows user to save events for each hour of the day. This app runs in the browser and features dynamically updated HTML and CSS and is powered by jQuery.
 
 Done as a challenge for UoT's Coding Bootcamp.
 
