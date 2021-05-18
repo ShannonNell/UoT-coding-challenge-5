@@ -1,9 +1,10 @@
-var currentDayEl = document.querySelector("#currentDay");
-
 //find current date and display
-currentDayEl.textContent = moment().format("dddd, MMMM Do, YYYY");
+$("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
 
+//empty array for tasks to be placed in
+tasks = [];
 
+//show current tasks
 // //create a task
 // var createTask = function(taskText){
 //     //create task paragraph
@@ -15,28 +16,37 @@ currentDayEl.textContent = moment().format("dddd, MMMM Do, YYYY");
 //     $(".task").append(taskP);
 // }
 
-// //task text was clicked
-// $(".task").on("click","p", function() {
-//     //get the current text of the p element
-//     var text = $(this)
-//         .text()
-//         .trim();
+// text entry was clicked
+$(".taskEntry").on("click", function() {
+ //get the current text of the p element
+ var text = $(this)
+     .text()
+     .trim();
 
-//     //replace with new textarea
-//     var textInput = $("<textarea>")
-//         .addClass("form-control")
-//         .val(text);
-
-$(".task").on("click", function() {
-    //conver to textarea
+    //convert to textarea
     var textInput = $("<textarea>")
-        .addClass("form-control col-10");
+        .addClass("form-control col-10")
+        .val(text);
 
     //turn div into textarea
     $(this).replaceWith(textInput);
-
     //auto focus for user
     textInput.trigger("focus");
-
-    console.log("I have been clicked");
 })
+
+//taskText was un-focused/update task
+$(".taskEntry").on("blur", "textarea", function() {
+    //get textarea's current value/text
+    var text = $(this)
+        .val()
+        .trim();
+
+    //recreate p element
+    var taskP = $("<p>")
+        .addClass("taskItem")
+        .text(text);
+
+    //replace textarea with p
+    $(this).replaceWith(taskP);
+
+});
