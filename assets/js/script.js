@@ -1,8 +1,8 @@
-//find current date and display
-$("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
-
 //empty array for tasks to be placed in
 var tasks = {};
+
+//find current date and display
+$("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
 
 //load and display tasks
 var loadTasks = function() {
@@ -27,13 +27,28 @@ var saveTasks = function() {
 };
 
 //var auditTask
-var auditTask = function() {
-    console.log(taskEl);
-}
+var auditHour = function() {
+    //get the current hour
+    var currentHour = moment().hour();
+    // console.log(currentHour);
+
+    //loop to test the hours between 0900 - 1700
+    for (var workHour = 9; workHour < 18; workHour++) {
+        //find hour task id, take off number so can loop through i numbers
+        var taskHour = $("#task-" + workHour);
+        if (currentHour > workHour) {
+            $(taskHour).addClass("past");
+        } else if (currentHour === workHour) {
+            $(taskHour).addClass("present");
+        } else {
+            $(taskHour).addClass("future");
+        }
+    };
+};
 
 // text entry was clicked
 $(".task-entry").on("click", "p", function() {
-    // console.log("task entry was clicked");
+    console.log("task entry was clicked");
  //get the current text of the p element
  var text = $(this)
      .text()
@@ -81,3 +96,11 @@ $(".saveBtn").on("click", function() {
 
 //load tasks when the page loads
 loadTasks();
+
+// load audit when page loacs
+auditHour();
+
+//run interval to check every hour
+setInterval(function() {
+    auditHour();
+}, (1000*60)*60);
