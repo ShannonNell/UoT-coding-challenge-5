@@ -2,7 +2,14 @@
 $("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
 
 //empty array for tasks to be placed in
-tasks = [];
+var tasks = [];
+
+// var createTask = function(taskText) {
+//     //create task paragraph inside div
+//     var taskP = $("<p>")
+//         .addClass("task-item")
+//         .text(taskText);
+// }
 
 //show current tasks
 // //create a task
@@ -17,7 +24,8 @@ tasks = [];
 // }
 
 // text entry was clicked
-$(".taskEntry").on("click", function() {
+$(".task-entry").on("click", "p", function() {
+    console.log("taskentry was clicked");
  //get the current text of the p element
  var text = $(this)
      .text()
@@ -35,7 +43,7 @@ $(".taskEntry").on("click", function() {
 })
 
 //taskText was un-focused/update task
-$(".taskEntry").on("blur", "textarea", function() {
+$(".task-entry").on("blur", "textarea", function() {
     //get textarea's current value/text
     var text = $(this)
         .val()
@@ -48,5 +56,9 @@ $(".taskEntry").on("blur", "textarea", function() {
 
     //replace textarea with p
     $(this).replaceWith(taskP);
-
 });
+
+//save tasks
+$(".saveBtn").on("click", function() {
+    console.log("Save was clicked");
+})

@@ -71,3 +71,10 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
+
+/* me add */
+.task-entry p, .task-item {
+  border: 1px solid red;
+  padding: 10px;
+  align-items: center;
+}
