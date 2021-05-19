@@ -2,26 +2,33 @@
 $("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
 
 //empty array for tasks to be placed in
-var tasks = [];
+var tasks = {};
 
-// var createTask = function(taskText) {
-//     //create task paragraph inside div
-//     var taskP = $("<p>")
-//         .addClass("task-item")
-//         .text(taskText);
-// }
+//load tasks
+var loadTasks = function() {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
 
-//show current tasks
-// //create a task
-// var createTask = function(taskText){
-//     //create task paragraph
-//     var taskP = $("<p>")
-//         .addClass("m-1")
-//         .text(taskText);
-    
-//     //append task p to parent div
-//     $(".task").append(taskP);
-// }
+    //if nothing in localStorage, new object to track new tasks
+    if (!tasks) {
+        tasks = {};
+    }
+
+    printTasks();
+};
+
+//print tasks if there are tasks to display
+var printTasks = function() {
+    $.each(tasks, function(list, arr) {
+        var taskP = $("p").addClass("description task-info-" + list).text(arr);
+    })
+}
+
+// var saveTasks = function() {
+//     localStorage.setItem("tasks", JSON.stringify(tasks));
+// };
+
+//var auditTask
+
 
 // text entry was clicked
 $(".task-entry").on("click", "p", function() {
@@ -54,7 +61,6 @@ $(".task-entry").on("blur", "textarea", function() {
         .addClass("taskItem")
         .text(text);
 
-
     //replace textarea with p
     $(this).replaceWith(taskP);
 });
@@ -65,9 +71,9 @@ $(".saveBtn").on("click", function() {
 
     //find index of this task
     var index = $(".saveBtn").index(this);
-    console.log(index);
 
-    tasks[index] = $(this).parent().find(".task-entry").text();
+    //update task in array and save to localStorage
+    tasks[index] = $(this).parent().find(".taskItem").text();
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 })
