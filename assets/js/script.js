@@ -48,7 +48,7 @@ var auditHour = function() {
 
 // text entry was clicked
 $(".task-entry").on("click", "p", function() {
-    console.log("task entry was clicked");
+    // console.log("task entry was clicked");
  //get the current text of the p element
  var text = $(this)
      .text()
@@ -56,7 +56,7 @@ $(".task-entry").on("click", "p", function() {
 
     //convert to textarea
     var textInput = $("<textarea>")
-        .addClass("form-control col-10")
+        .addClass("form-control col-12")
         .val(text);
 
     //turn div into textarea
