@@ -27,11 +27,13 @@ var saveTasks = function() {
 };
 
 //var auditTask
-
+var auditTask = function() {
+    console.log(taskEl);
+}
 
 // text entry was clicked
 $(".task-entry").on("click", "p", function() {
-    console.log("taskentry was clicked");
+    // console.log("task entry was clicked");
  //get the current text of the p element
  var text = $(this)
      .text()
@@ -66,7 +68,7 @@ $(".task-entry").on("blur", "textarea", function() {
 
 //save tasks button clicked
 $(".saveBtn").on("click", function() {
-    console.log("Save was clicked");
+    // console.log("Save was clicked");
 
     //find index of this task
     var index = $(".saveBtn").index(this);
@@ -77,4 +79,5 @@ $(".saveBtn").on("click", function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 })
 
+//load tasks when the page loads
 loadTasks();
