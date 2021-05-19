@@ -4,28 +4,27 @@ $("#currentDay").text(moment().format("dddd, MMMM Do, YYYY"));
 //empty array for tasks to be placed in
 var tasks = {};
 
-//load tasks
+//load and display tasks
 var loadTasks = function() {
     tasks = JSON.parse(localStorage.getItem("tasks"));
 
     //if nothing in localStorage, new object to track new tasks
     if (!tasks) {
         tasks = {};
-    }
+    };
 
-    printTasks();
+    $.each(tasks, function(list, arr) {
+        var taskP = $("<p>").addClass("description task-info-" + list).text(arr);
+
+        //replace anything in task-info p with this updated taskP
+        $("#task-info-" + list).replaceWith(taskP);
+    });    
 };
 
-//print tasks if there are tasks to display
-var printTasks = function() {
-    $.each(tasks, function(list, arr) {
-        var taskP = $("p").addClass("description task-info-" + list).text(arr);
-    })
-}
 
-// var saveTasks = function() {
-//     localStorage.setItem("tasks", JSON.stringify(tasks));
-// };
+var saveTasks = function() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+};
 
 //var auditTask
 
@@ -77,3 +76,5 @@ $(".saveBtn").on("click", function() {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 })
+
+loadTasks();
