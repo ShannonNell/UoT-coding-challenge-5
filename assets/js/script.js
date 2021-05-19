@@ -54,11 +54,7 @@ $(".task-entry").on("blur", "textarea", function() {
         .addClass("taskItem")
         .text(text);
 
+
     //replace textarea with p
     $(this).replaceWith(taskP);
 });
-
-//save tasks
-$(".saveBtn").on("click", function() {
-    console.log("Save was clicked");
-})
