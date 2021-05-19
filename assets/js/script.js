@@ -21,12 +21,12 @@ var loadTasks = function() {
     });    
 };
 
-
+//save tasks to localStorage
 var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
-//var auditTask
+//Color task hours depending on past, present, future time
 var auditHour = function() {
     //get the current hour
     var currentHour = moment().hour();
@@ -65,7 +65,7 @@ $(".task-entry").on("click", "p", function() {
     textInput.trigger("focus");
 })
 
-//taskText was un-focused/update task
+// Text was un-focused/update task
 $(".task-entry").on("blur", "textarea", function() {
     //get textarea's current value/text
     var text = $(this)

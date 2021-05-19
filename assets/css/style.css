@@ -80,3 +80,7 @@ textarea{
   color: #000000;
   line-height: 1.3;
 }
+
+.saveBtn:focus {
+  outline: none;
+}
