@@ -58,3 +58,16 @@ $(".task-entry").on("blur", "textarea", function() {
     //replace textarea with p
     $(this).replaceWith(taskP);
 });
+
+//save tasks button clicked
+$(".saveBtn").on("click", function() {
+    console.log("Save was clicked");
+
+    //find index of this task
+    var index = $(".saveBtn").index(this);
+    console.log(index);
+
+    tasks[index] = $(this).parent().find(".task-entry").text();
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+})
