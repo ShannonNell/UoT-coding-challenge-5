@@ -14,13 +14,11 @@ Done as a challenge for UoT's Coding Bootcamp.
 
 ## Usage
 Application that allows user to save events for each hour of the day.
-![screenshotHere](link to screenshot)
+![Work Day Scheduler screenshot](./assets/images/uot_ch5_screenshot.png)
 
 ## Links
-### Deployed Quiz:
-* [Quiz](link)
-### Links that helped:
-* 
+### Deployed Scheduler:
+* [Work Day Scheduler](https://shannonnell.github.io/UoT-coding-challenge-5/)
 
 ## Tools
 * HTML 
