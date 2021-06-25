@@ -103,4 +103,5 @@ auditHour();
 //run interval to check every hour
 setInterval(function() {
     auditHour();
-}, (1000*60)*60);
+    // console.log(1);
+}, 1000);
